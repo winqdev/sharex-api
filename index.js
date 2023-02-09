@@ -23,6 +23,10 @@ const upload = multer({ storage: storage });
 
 //Routes
 
+//Hello world?
+app.get("/", (req, res) => {
+  res.send("Hello World!")
+});
 //Endpoint for uploading from ShareX
 app.post('/screenshots', upload.array('screenshots', 10), (req, res) => {
   res.send(`${url}/get/${filename}`);
