@@ -3,8 +3,12 @@ const app = express();
 //Common things
 const path = require('path');
 const fs = require('fs');
-//config
+//Random string
+function rdm() {
 let r = (Math.random() + 1).toString(36).substring(2);
+  return r;
+}
+//Cfg
 let filename;
 const port = 80; //Port, defualt 80
 const url = "http://example.com" //Your URL, use HTTPS for SSL cerificate
@@ -15,8 +19,8 @@ const storage = multer.diskStorage({
     cb(null, 'screenshots/');
   },
   filename: function (req, file, cb) {
-    cb(null, r + ".png"); //file.originalname
-    filename = r + ".png"
+    cb(null, rdm() + ".png"); //file.originalname
+    filename = rdm() + ".png"
   }
 });
 const upload = multer({ storage: storage });
